@@ -1,0 +1,23 @@
+.ol-Color {
+  background-color: yellow;
+}
+
+ol li:nth-child(even) {
+  color: green;
+
+}
+
+ol li:nth-child(odd) {
+  text-transform: uppercase;
+
+}
+
+h1, h2 {
+  color: red;
+
+}
+
+h1 em, h2 em {
+  font-size: 40px;
+  border: 1px solid black;
+}
