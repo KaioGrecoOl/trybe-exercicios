@@ -31,7 +31,7 @@ let height = 8;
 
 // Crie uma constante chamada area e atribua a ela o resultado da multiplicação da base pela altura. Dica: lembre-se de usar sempre o console.log para imprimir as variáveis e checar os resultados das operações!
 
-const area = base + height;
+const area = base * height;
 console.log(area);
 
 // Crie uma constante chamada perimeter e atribua a ela a soma de todos os lados do retângulo
@@ -63,10 +63,16 @@ if (bebida === 'cafézinho' && comida === 'pão na chapa') {
 } else {
   console.log('Acho que houve um engano com meu pedido');
 }
+// Segue abaixo o retorno  fornecido pelas possibilidades de esposta
+
+console.log(true && true); // true
+console.log(true && false); // false
+console.log(false && true); // false
+console.log(false && false); // false
 
 // Crie uma constante chamada "currentHour" que recebe um número entre 4 e 24 de sua escolha, para representar as horas do dia.
 
-const currentHour = 13;
+const currentHour = 22;
 
 // Crie uma variável chamada "message" que, inicialmente, é uma string vazia.
 
