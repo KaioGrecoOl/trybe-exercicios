@@ -63,7 +63,7 @@ if (bebida === 'cafézinho' && comida === 'pão na chapa') {
 } else {
   console.log('Acho que houve um engano com meu pedido');
 }
-// Segue abaixo o retorno  fornecido pelas possibilidades de esposta
+// Segue abaixo o retorno  fornecido pelas possibilidades de esposta com operador and
 
 console.log(true && true); // true
 console.log(true && false); // false
@@ -93,3 +93,22 @@ if (currentHour >= 22) {
   }
 
 console.log(message);
+
+// Segue abaixo o retorno  fornecido pelas possibilidades de esposta com operador or
+
+// console.log(true || true); // true
+// console.log(true || false); // true
+// console.log(false || true); // true
+// console.log(false || false); // false
+
+// Crie uma variável chamada "weekDay" que recebe a string "quarta-feira"
+
+let = weekDay = 'domingo';
+
+// Implemente condicionais para que:Se nossa variável "weekDay" for "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira" ou "sexta-feira", imprima "Oba, mais um dia de aprendizado na Trybe >:D", Se for algum dia de fim de semana, imprima "FINALMENTE, descanso merecido UwU
+
+if (weekDay === 'segunda-feira' || weekDay === 'terça-feira' || weekDay === 'quarta-feira' || weekDay === 'quinta-feira' || weekDay == 'sexta-feira') {
+  console.log('Oba, mais um dia de aprendizado na Trybe >:D');
+} else {
+  console.log('FINALMENTE, descanso merecido UwU');
+}
