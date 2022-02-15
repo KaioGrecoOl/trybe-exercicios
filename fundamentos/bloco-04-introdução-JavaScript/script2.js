@@ -109,3 +109,45 @@ switch (chessPi.toLowerCase()) {
       break;
 }
 
+// Escreva um programa que converte uma nota dada em porcentagem (de 0 a 100) em conceitos de A a F. Siga essas regras:Porcentagem >= 90 -> A,Porcentagem >= 80 -> B, Porcentagem >= 70 -> C, Porcentagem >= 60 -> D, Porcentagem >= 50 -> E, Porcentagem < 50 -> F. O programa deve retornar uma mensagem de erro e encerrar se a nota passada for menor que 0 ou maior que 100.
+
+
+let studentGrade = 43;
+
+if (studentGrade >= 90) {
+  console.log('Grade A');
+} else if (studentGrade >= 80) {
+  console.log('Grade B');
+} else if (studentGrade >= 70) {
+  console.log('Grade C');
+} else if (studentGrade >= 60) {
+  console.log('Grade D');
+} else if (studentGrade >= 50) {
+  console.log('Grade E');
+} else {
+  console.log('Grade F');
+}
+
+// Escreva um programa que defina três números em constantes e retorne true se pelo menos uma das três for par. Caso contrário, ele retorna false
+
+const firstNumber = 4;
+const secondNumber = 17;
+const thirdNumber = 3;
+let isEven = false;
+
+if ((firstNumber % 2 === 0 || secondNumber % 2 === 0 || thirdNumber % 2 === 0)) {
+  isEven = true;
+};
+console.log(isEven);
+
+// Escreva um programa que defina três números em constantes e retorne true se pelo menos uma das três for ímpar. Caso contrário, ele retorna false .
+
+const first = 1;
+const second = 17;
+const third = 3;
+let isOdd = false;
+
+if ((first % 2 !== 0 || second % 2 !== 0 || third % 2 !== 0)) {
+  isOdd = true;
+};
+console.log(isOdd);
