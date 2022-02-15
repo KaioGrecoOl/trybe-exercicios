@@ -120,4 +120,21 @@ console.log(!(4 + 2) === 6);
 
 // Crie uma variável para armazenar o estado da pessoa candidata no processo seletivo, que pode ser: 'aprovada' , 'lista' ou 'reprovada'
 
+let canditeStatus = 'lista';
+switch (canditeStatus) {
+  case 'aprovado':
+    console.log('Parabéns, você foi aprovada(o)!');
+    break;
+
+  case 'lista':
+    console.log('Você está na nossa lista de espera');
+    break;
+
+  case 'reprovada':
+    console.log('Você foi reprovada(o)');
+    break;
+
+    default:
+      console.log('Valor não identificado');
+}
 
