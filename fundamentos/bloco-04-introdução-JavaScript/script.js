@@ -112,3 +112,12 @@ if (weekDay === 'segunda-feira' || weekDay === 'terça-feira' || weekDay === 'qu
 } else {
   console.log('FINALMENTE, descanso merecido UwU');
 }
+
+// operador not
+
+console.log((4 + 2) === 6);
+console.log(!(4 + 2) === 6);
+
+// Crie uma variável para armazenar o estado da pessoa candidata no processo seletivo, que pode ser: 'aprovada' , 'lista' ou 'reprovada'
+
+
