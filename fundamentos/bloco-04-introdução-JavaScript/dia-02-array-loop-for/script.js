@@ -130,3 +130,4 @@ console.log(options);
 for (let index = 0; index < options.length; index ++) {
 console.log(options[index] / 2);
 }
+
