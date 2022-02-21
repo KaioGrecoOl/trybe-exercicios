@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
+import propTypes from "prop-types";
 
 class TvShow extends Component {
   render() {
@@ -19,6 +21,19 @@ class TvShow extends Component {
       </article>
     );
   }
+}
+
+TvShow.propTypes = {
+  tvShow: PropTypes.shape({
+    name: PropTypes.string,
+    image: PropTypes.string,
+    genre: PropTypes.string,
+    characters: PropTypes.arrayOf(PropTypes.string),
+    info: PropTypes.shape({
+      seasons: PropTypes.string,
+      episodes: propTypes.number
+    })
+  }).isRequired
 }
 
 export default TvShow;
