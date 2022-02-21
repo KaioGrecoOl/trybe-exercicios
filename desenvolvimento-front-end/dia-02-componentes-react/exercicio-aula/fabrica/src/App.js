@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import TvShow from "./components/TvShow";
+import catalog from './data';
 
 class App extends Component {
   render() {
@@ -8,7 +9,12 @@ class App extends Component {
       <main>
         <h1>🍿 Fantástica Fábrica - Séries</h1>
         <section>
-          <TvShow />
+          {catalog.map((tvShow) => {
+            return (
+            <TvShow tvShow={tvShow}  />
+            )
+          })
+          }
         </section>
       </main>
     );
