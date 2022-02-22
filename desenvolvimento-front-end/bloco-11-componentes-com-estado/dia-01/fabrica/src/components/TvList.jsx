@@ -15,17 +15,19 @@ class TvList extends Component {
     // console.log(event.target.value);
     this.setState({
       filterName: event.target.value
-    })
+    }, () => console.log(this.state.filterName))
 
   }
 
   render() {
-    console.log(this.state.filterName);
+    // console.log(this.state.filterName);
     return (
       <div>
         <input type="text" name="filterName" onChange={this.handleFilter} />
         <section>
-          {catalog.map((tvShow) => (
+          {catalog
+          .filter((serie) => serie.name.includes(this.state.filterName))
+          .map((tvShow) => (
             <TvShow key={tvShow.id} tvShowInfo={tvShow} />
           ))}
         </section>
