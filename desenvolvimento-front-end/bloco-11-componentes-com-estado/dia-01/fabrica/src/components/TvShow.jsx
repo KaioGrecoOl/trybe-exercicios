@@ -27,7 +27,7 @@ class TvShow extends Component {
 }
 
 TvShow.propTypes = {
-  tvShow: PropTypes.shape({
+  tvShowInfo: PropTypes.shape({
     name: PropTypes.string,
     image: PropTypes.string,
     genre: PropTypes.string,
