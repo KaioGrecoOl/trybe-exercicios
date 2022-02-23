@@ -4,7 +4,10 @@ class NomeCompleto extends Component {
   render() {
 
     const { value, handleChange } = this.props;
-    
+
+    let error = undefined;
+    if (value.length > 30) error = "Nome muito grande!"
+
     return (
     <label>
       Nome:
@@ -14,6 +17,8 @@ class NomeCompleto extends Component {
         type="text"
         name="nomeCompleto"
       />
+
+      <span>{error ? error : ''}</span>
     </label>
     );
   }
