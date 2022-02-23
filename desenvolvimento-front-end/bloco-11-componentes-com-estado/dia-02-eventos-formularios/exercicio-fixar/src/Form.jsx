@@ -16,14 +16,15 @@ class Form extends Component {
   }
 
   handleChange( {target }) {
-    const { name, value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value
     this.setState({ 
     [name]: value
   });
   }
 
   render() {
-    const { nomeCompleto, ident, escolhaVa, fale } = this.state;
+    const { nomeCompleto, ident, escolhaVa, fale, selecionar } = this.state;
 
     return (
       <div>
@@ -71,6 +72,16 @@ class Form extends Component {
             onChange={this.handleChange}
             />
           </label>
+
+          <span>
+            <input 
+            type="checkbox"
+            name="selecionar"
+            value={selecionar}
+            onChange={this.handleChange}
+            />
+              Estou de acordo.
+          </span>
         </form>
       </div>
     );
