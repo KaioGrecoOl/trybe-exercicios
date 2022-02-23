@@ -5,18 +5,26 @@ class Form extends Component {
   constructor() {
     super()
 
-    this.handleName = this.handleName.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      name: "",
+      nomeCompleto: "",
+      ident: "",
+      escolhaVa: "",
+      fale: "",
     }
   }
 
-  handleName(event) {
-    this.setState({ name: event.target.value } );
+  handleChange( {target }) {
+    const { name, value } = target;
+    this.setState({ 
+    [name]: value
+  });
   }
 
   render() {
+    const { nomeCompleto, ident, escolhaVa, fale } = this.state;
+
     return (
       <div>
         <h1>Meu Formulário</h1>
@@ -24,28 +32,44 @@ class Form extends Component {
           <label>
             Nome:
             <input 
-            value={this.state.name} 
-            onChange={this.handleName} 
-            type="text" name="name" 
+            value={nomeCompleto} 
+            onChange={this.handleChange} 
+            type="text" 
+            name="nomeCompleto" 
             />
           </label>
 
           <label>
             CPF:
-            <input type="text" name="id" />
+            <input 
+            type="text" 
+            name="ident"
+            value={ident}
+            onChange={this.handleChange}
+            />
           </label>
 
           <label> Escolha um dos valores: 
-            <select name="select">
-              <option value="valo1">Valor 1</option>
-              <option value="valo2">Valor 2</option>
+            <select 
+            name="escolhaVa"
+            value={escolhaVa}
+            onChange={this.handleChange} 
+            >
+              <option 
+              value="valo1">Valor 1</option>
+              <option 
+              value="valo2">Valor 2</option>
             </select>
           </label>
 
           <label>
             {" "}
             Fale sobre você:
-            <textarea name="fale" />
+            <textarea 
+            name="fale"
+            value={fale}
+            onChange={this.handleChange}
+            />
           </label>
         </form>
       </div>
