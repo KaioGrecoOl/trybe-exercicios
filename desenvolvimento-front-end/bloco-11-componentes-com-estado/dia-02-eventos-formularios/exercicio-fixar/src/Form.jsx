@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import './App.css'
+import "./App.css";
+import NomeCompleto from "./NomeCompleto";
 
 class Form extends Component {
   constructor() {
-    super()
+    super();
 
     this.handleChange = this.handleChange.bind(this);
 
@@ -12,15 +13,16 @@ class Form extends Component {
       ident: "",
       escolhaVa: "",
       fale: "",
-    }
+      selecionar: false,
+    };
   }
 
-  handleChange( {target }) {
+  handleChange({ target }) {
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value
-    this.setState({ 
-    [name]: value
-  });
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
@@ -30,58 +32,48 @@ class Form extends Component {
       <div>
         <h1>Meu Formulário</h1>
         <form className="form">
-          <label>
-            Nome:
-            <input 
-            value={nomeCompleto} 
-            onChange={this.handleChange} 
-            type="text" 
-            name="nomeCompleto" 
-            />
-          </label>
+          <NomeCompleto value={nomeCompleto} handleChange={this.handleChange} />
 
           <label>
             CPF:
-            <input 
-            type="text" 
-            name="ident"
-            value={ident}
-            onChange={this.handleChange}
+            <input
+              type="text"
+              name="ident"
+              value={ident}
+              onChange={this.handleChange}
             />
-          </label>
-
-          <label> Escolha um dos valores: 
-            <select 
-            name="escolhaVa"
-            value={escolhaVa}
-            onChange={this.handleChange} 
-            >
-              <option 
-              value="valo1">Valor 1</option>
-              <option 
-              value="valo2">Valor 2</option>
-            </select>
           </label>
 
           <label>
             {" "}
-            Fale sobre você:
-            <textarea 
-            name="fale"
-            value={fale}
-            onChange={this.handleChange}
-            />
+            Escolha um dos valores:
+            <select
+              name="escolhaVa"
+              value={escolhaVa}
+              onChange={this.handleChange}
+            >
+              <option value="valo1">Valor 1</option>
+              <option value="valo2">Valor 2</option>
+            </select>
           </label>
+          <fieldset>
+            <label>
+              {" "}
+              Fale sobre você:
+              <textarea name="fale" value={fale} onChange={this.handleChange} />
+            </label>
 
-          <span>
-            <input 
-            type="checkbox"
-            name="selecionar"
-            value={selecionar}
-            onChange={this.handleChange}
-            />
+            <span>
+              <input
+                type="checkbox"
+                name="selecionar"
+                value={selecionar}
+                onChange={this.handleChange}
+              />
               Estou de acordo.
-          </span>
+            </span>
+            <input type="file"></input>
+          </fieldset>
         </form>
       </div>
     );
