@@ -1,3 +1,5 @@
+As linhas de código do rickandmorty foram fornecidas para entender os comandos.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
