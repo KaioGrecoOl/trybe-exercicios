@@ -1,3 +1,4 @@
+// Linhas de código já fornecidas
 import React, { Component }from 'react';
 import './App.css';
 
