@@ -1,4 +1,4 @@
-As linhas de código do rickandmorty foram fornecidas para entender os comandos.
+# As linhas de código do rickandmorty foram fornecidas para entender os comandos.
 
 # Getting Started with Create React App
 
