@@ -25,6 +25,11 @@ const clearPlaylists = () => {
   element.innerHTML = '';
 }
 
+const clearMusics = () => {
+  const element = document.querySelector('.tracks-cards');
+  element.innerHTML = '';
+}
+
 // HANDLER
 
 const handleGenreClick = async ({ target }) => {
@@ -40,6 +45,37 @@ const handleGenreClick = async ({ target }) => {
   renderPlaylists(playList)
 
 };
+
+const handlePlaylistCardClick = async ({ target }) => {
+  const playlistSection = getElementOrClosest('.playlist', target);
+  const id = playlistSection.id;
+
+  clearSelectedItem('.playlist-cards');
+  playlistSection.classList.add('item-selected');
+
+  const musics = await getMusics(token, id);
+  clearMusics();
+  renderMusics(musics);
+};
+
+const handleTrackCardClick = async ({ target }) => {
+  const trackSection = getElementOrClosest('.track', target);
+  const id = trackSection.id;
+
+  clearSelectedItem('.tracks-cards');
+  trackSection.classList.add('item-selected');
+
+  // const player = document.querySelector('#player');
+  // if (player) {
+  //   player.querySelector('source').src = trackSection.value;
+  //   player.load();
+  // } else {
+  //   createPlayer(trackSection.value);
+  // }
+
+  // document.querySelector('#playing-music-name').innerHTML = target.innerText;
+
+}
 
 // REQUEST
 
@@ -85,6 +121,22 @@ const getPlaylists = async (token, genreId) => {
   const response = await fetch(url, requestInfo);
   const data = await response.json();
   return data.playlists.items;
+};
+
+const getMusics = async (token, playlistId) => {
+  const requestInfo = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  };
+
+  const url = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
+  // console.log(url);
+  const response = await fetch(url, requestInfo);
+  const data = await response.json();
+  // console.log(data);
+  return data.items;
 }
 
 
@@ -127,9 +179,28 @@ const renderPlaylists = (playlists) => {
     paragraph.innerHTML = playlist.name;
 
     section.appendChild(paragraph);
-    // section.addEventListener('click', handlePlaylistCardClick);
+    section.addEventListener('click', handlePlaylistCardClick);
 
     playlistsCards.appendChild(section);
+  });
+};
+
+const renderMusics = (tracks) => {
+  const tracksCards = document.querySelector('.tracks-cards');
+
+  tracks.forEach((track) => {
+    const section = document.createElement('section');
+    section.className = 'track text-card';
+    section.id = track.id;
+
+    const paragraph = document.createElement('p');
+    paragraph.className = 'track-title';
+    paragraph.innerHTML = track.track.name;
+
+    section.appendChild(paragraph);
+    section.addEventListener('click', handleTrackCardClick);
+
+    tracksCards.appendChild(section);
   });
 };
 
