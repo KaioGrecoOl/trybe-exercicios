@@ -65,17 +65,18 @@ const handleTrackCardClick = async ({ target }) => {
   clearSelectedItem('.tracks-cards');
   trackSection.classList.add('item-selected');
 
-  // const player = document.querySelector('#player');
-  // if (player) {
-  //   player.querySelector('source').src = trackSection.value;
-  //   player.load();
-  // } else {
-  //   createPlayer(trackSection.value);
-  // }
+  const player = document.querySelector('#player');
+  if (player) {
+    player.querySelector('source').src = trackSection.value;
+    player.load();
+  } else {
+    createPlayer(trackSection.value);
+  }
 
-  // document.querySelector('#playing-music-name').innerHTML = target.innerText;
+  document.querySelector('#music-name').innerHTML = target.innerText;
 
-}
+};
+
 
 // REQUEST
 
@@ -192,6 +193,7 @@ const renderMusics = (tracks) => {
     const section = document.createElement('section');
     section.className = 'track text-card';
     section.id = track.id;
+    section.value = track.track.preview_url;
 
     const paragraph = document.createElement('p');
     paragraph.className = 'track-title';
@@ -202,6 +204,21 @@ const renderMusics = (tracks) => {
 
     tracksCards.appendChild(section);
   });
+};
+
+const createPlayer = (src) => {
+  const audio = document.createElement('audio');
+  audio.controls = true;
+  audio.autoplay = true;
+  audio.id = 'player';
+
+  const source = document.createElement('source');
+  source.src = src;
+  audio.appendChild(source);
+
+  document.querySelector('.player-container').appendChild(audio);
+
+  return audio;
 };
 
 window.onload = async () => {
