@@ -7,19 +7,38 @@ let token;
 const getElementOrClosest = (sectionClass, target) =>
   target.classList.contains(sectionClass)
     ? target 
-    : target.closest(sectionClass)
+    : target.closest(sectionClass);
   // if (target.classList.constins(sectionClass)) {
   //   return target;
   // }
   // return target.closest(sectionClass);
-;
+
+const clearSelectedItem = (containerSelector) => {
+  const element = document.querySelector(`${containerSelector} .item-selected`);
+  if (element){ 
+    element.classList.remove('item-selected')
+  }
+};
+
+const clearPlaylists = () => {
+  const element = document.querySelector('.playlist-cards');
+  element.innerHTML = '';
+}
 
 // HANDLER
 
-const handleGenreClick = ({ target }) => {
+const handleGenreClick = async ({ target }) => {
   const genreSection = getElementOrClosest('.genre', target);
   const id = genreSection.id;
+
+  clearSelectedItem('.genre-cards');
   genreSection.classList.add('item-selected')
+
+  const playList = await getPlaylists(token, id);
+  // console.log(playList);
+  clearPlaylists();
+  renderPlaylists(playList)
+
 };
 
 // REQUEST
@@ -54,6 +73,21 @@ const musicGenres = async (token) => {
 
 }
 
+const getPlaylists = async (token, genreId) => {
+  const requestInfo = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  };
+
+  const url = `https://api.spotify.com/v1/browse/categories/${genreId}/playlists`;
+  const response = await fetch(url, requestInfo);
+  const data = await response.json();
+  return data.playlists.items;
+}
+
+
 // RENDERS
 
 const renderGenres = (genres) => {
@@ -77,6 +111,25 @@ const renderGenres = (genres) => {
     section.addEventListener('click', handleGenreClick);
 
     genresCards.appendChild(section);
+  });
+};
+
+const renderPlaylists = (playlists) => {
+  const playlistsCards = document.querySelector('.playlist-cards');
+
+  playlists.forEach((playlist) => {
+    const section = document.createElement('section');
+    section.className = 'playlist text-card';
+    section.id = playlist.id;
+
+    const paragraph = document.createElement('p');
+    paragraph.className = 'playlist-title';
+    paragraph.innerHTML = playlist.name;
+
+    section.appendChild(paragraph);
+    // section.addEventListener('click', handlePlaylistCardClick);
+
+    playlistsCards.appendChild(section);
   });
 };
 
