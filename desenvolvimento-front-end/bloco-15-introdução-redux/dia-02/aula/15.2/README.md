@@ -1,3 +1,5 @@
+# As linhas de código inicial foram fornecidas para realizar o acompanhamento.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

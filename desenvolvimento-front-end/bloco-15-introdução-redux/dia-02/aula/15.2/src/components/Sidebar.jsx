@@ -1,21 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { selectMovie, SELECT_MOVIE } from '../actions';
 
 class Sidebar extends React.Component {
   render() {
+    const { category, movie, selectNewMovie } = this.props;
     return (
       <aside>
         <div>
-          <h3>Uma categoria hardcoded</h3>
+          <h3>{category}</h3>
           <ul>
             <li>
-              Um filme qualquer
+              {movie.title}
               {' '}
               was released in
               {' '}
-              1995
+              {movie.released}
               <button
                 type="button"
-                onClick={ () => {} }
+                onClick={ () => selectNewMovie(movie) }
               >
                 Select
               </button>
@@ -27,4 +30,13 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => ({
+  category: state.categories[0].name,
+  movie: state.categories[0].movies[0],
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  selectNewMovie: (selectedMovie) => dispatch(selectMovie(selectedMovie)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
