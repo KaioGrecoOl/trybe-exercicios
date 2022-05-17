@@ -43,7 +43,7 @@ docker container run ubuntu echo 'Hello Trybe'
 
 # 10 - Comando para rodar o contêiner de forma interativa (da acesso ao Terminal)
 
-docker container run -ti ubuntu 
+docker container run -it ubuntu 
 /# cat /etc/lsb-release (retorna dados da distribuição)
 
 # 11 - Principais comandos Docker
