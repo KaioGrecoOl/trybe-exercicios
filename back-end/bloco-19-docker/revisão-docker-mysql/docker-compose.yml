@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    container_name: meuMySQL
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=Trybe2022!
+      - MYSQL_USER:=Tryber
+      - MYSQL_PASSWORD=tryber19
+    restart: always
+    volumes: 
+      - /Users/kaiogreco/trybe-exercicios/back-end/bloco-19-docker/revisão-docker-mysql/data:/var/lib/mysql
