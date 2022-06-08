@@ -1,0 +1,3 @@
+O IMC de Kaio é: 21.60
+O IMC de Rodrigo é: 23.62
+O IMC de Marcus é: 23.55
