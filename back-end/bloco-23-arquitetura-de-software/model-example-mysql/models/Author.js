@@ -31,6 +31,39 @@ const getAll = async () => {
 	return authors.map(seriaLize).map(getNewAuthor);
 };
 
+const findById = async (id) => {
+  const [authorData] = await connection.execute(
+		'SELECT id, first_name, middle_name, last_name FROM authors WHERE id = ?;',
+    [id]
+	);
+
+  if (authorData.length === 0) return null;
+
+  const { firsName, middleName, lastName } = authorData.map(seriaLize)[0];
+
+  return getNewAuthor({
+    id,
+    firsName,
+    middleName,
+    lastName
+  });
+};
+
+const isValid = (firsName, middleName, lastName) => {
+  if (!firsName || typeof firsName !== 'string') return false;
+  if (!lastName || typeof lastName !== 'string') return false;
+
+  return true;
+}
+
+const create = async (firstName, middleName, lastName) => connection.execute(
+	'INSERT INTO model_example.authors (first_name, middle_name, last_name) VALUES (?,?,?)',
+	[firstName, middleName, lastName],
+);
+
 module.exports = {
 	getAll,
+  findById,
+  isValid,
+  create
 };
