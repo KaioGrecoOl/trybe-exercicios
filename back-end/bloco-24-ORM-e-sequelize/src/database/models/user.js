@@ -1,5 +1,4 @@
 'use strict';
-
 //JSdocs
   /**
    * @param {import('sequelize').Sequelize } sequelize 
@@ -12,9 +11,10 @@ const createUserModel = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     phone: DataTypes.STRING,
   }, {
+    underscored: true,
     tableName: 'users'
   })
   return User;
 };
 
-module.exports = createUserModel;
+module.exports = createUserModel
