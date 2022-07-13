@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); //biblioteca que permite que nossa api seja acessivel por alguns indereços
+const cors = require('cors'); 
 const usersRouter = require('./routes/user.routes')
 
 const app = express();
