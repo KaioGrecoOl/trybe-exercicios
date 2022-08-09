@@ -1,7 +1,10 @@
 import MiddleEarthPeoples from "./middleEarthPeoples";
-
 //subclasse que herda elementos do da superclasse middleearthpeople
-export default class Hobbit extends MiddleEarthPeoples {
+
+interface Question {
+  pergunta: string;
+}
+export default class Hobbit extends MiddleEarthPeoples implements Question {
     private stealth: string;
     private hairyFeet: string;
     private braveness: string;
@@ -17,3 +20,5 @@ export default class Hobbit extends MiddleEarthPeoples {
     }
 
 }
+
+// super você acessa o contrutor da superclasse
