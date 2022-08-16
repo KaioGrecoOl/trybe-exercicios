@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, { ErrorRequestHandler, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 const app = express();
@@ -11,8 +11,8 @@ app.get('/', (req: Request, res: Response) => {
   res.status(StatusCodes.OK).send('Express + Typescript');
 });
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  const { name, message, details } = err as any;
+const erroMiddleware: ErrorRequestHandler = (err, req, res, next) => {
+  const { name, message, details } = err;
   console.log(`name: ${name}`);
 
   switch (name) {
@@ -31,7 +31,9 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   }
 
   next();
-});
+};
+
+app.use(erroMiddleware);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http:/localhost:${PORT}`);
