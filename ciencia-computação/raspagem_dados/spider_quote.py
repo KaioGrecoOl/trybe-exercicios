@@ -28,10 +28,19 @@ def extract_quotes(content: str) -> list:
     return quotes
 
 def get_all_quotes() -> list:
-  ...
+  base_url = 'https://quotes.toscrape.com/'
+  next_page = '/'
+  quotes = []
+  while next_page:
+    content = fetch_content(base_url + next_page)
+    quotes.extend(extract_quotes(content))
+    next_page = Selector(content).css('li.next > a::attr(href)').get()
+
+  return quotes
 
 if __name__ == "__main__":
-    page_content = fetch_content("https://quotes.toscrape.com/")
-    quotes = extract_quotes(page_content)
+     quotes = get_all_quotes()
+    # page_content = fetch_content("https://quotes.toscrape.com/")
+    # quotes = extract_quotes(page_content)
     # print(quotes)
     # print(page_content)
