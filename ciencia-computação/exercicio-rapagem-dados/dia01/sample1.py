@@ -30,4 +30,6 @@ if description.endswith(suffix):
 
 cover = url + selector.css("#product_gallery img::attr(src)").get()
 
-print(title, price, description, cover, sep=",")
+availability = selector.css(".product_main .availability::text").re_first(r"\d")
+
+print(title, price, description, cover, availability, sep=",")
